@@ -1,0 +1,25 @@
+.teaser {
+  border-bottom: 1px solid $grey-light;
+  list-style: none;
+  list-style-image: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  &:first-child {
+    border-top: 1px solid $grey-light;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    a .listing__title,
+    a.listing__title {
+      text-decoration: underline;
+      color: $grey-base;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
