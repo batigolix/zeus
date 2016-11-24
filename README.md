@@ -7,12 +7,14 @@ See also DAE-1849
 
 Note: ensure you do not have duplicates of the zeus theme in different places in your project. This confuses the hell out of Drupal.
 
-## Via make file
+## Via drush make file
 
     projects[zeus][type] = "theme"
     projects[zeus][download][type] = "git"
     projects[zeus][download][url] = https://github.com/batigolix/zeus.git
     projects[zeus][branch] = "master"
+
+Replace master with the branch name you want to include a specific version of the theme in your project. E.g. "release/1.2.3". See drush make docs for more info.
 
 ## Git clone
 
