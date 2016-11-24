@@ -4,6 +4,8 @@
 
 Sub theme for DGConnect websites
 
+tpl.php templates are copied from Basic theme except field\*.tpl.php are from Drupal core
+
 See also DAE-1849
 
 #Add Zeus to project
