@@ -1,4 +1,7 @@
 # Zeus
+
+![Statue of Zeus](statue-of-zeus.png)
+
 Sub theme for DGConnect websites
 
 See also DAE-1849
