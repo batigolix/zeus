@@ -6,24 +6,19 @@ engine = phptemplate
 package = CNECT
 base theme = ec_resp
 screenshot = zeus.jpg
+
+; Stylesheets
 stylesheets[all][] = css/zeus.css
 stylesheets[all][] = ec_resp.css
 stylesheets[all][] = print.css
 
-# new regions
-regions[page_header] = "Page header"
-
-# old regions
-regions[header_top] = "Header Top"
-regions[header_right] = "Header Right"
-regions[featured] = "Featured"
-regions[tools] = "Tools"
-regions[help] = "Help"
-regions[sidebar_left] = "Sidebar Left"
-regions[sidebar_right] = "Sidebar Right"
-regions[content_top] = "Content Top"
-regions[content] = "Content"
-regions[content_right] = "Content Right"
-regions[content_bottom] = "Content Bottom"
-regions[footer] = "Footer"
-multisite_version = 2.2
+; Regions
+regions[page_top] = Page top
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[footer] = Footer
+regions[page_bottom] = Page bottom

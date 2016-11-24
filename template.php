@@ -7,6 +7,13 @@ function zeus_js_alter(&$javascript) {
   unset($javascript[drupal_get_path('theme', 'ec_resp') . '/scripts/ec.js']);
   unset($javascript[drupal_get_path('theme', 'ec_resp') . '/scripts/jquery.mousewheel.min.js']);
   unset($javascript[drupal_get_path('theme', 'ec_resp') . '/scripts/ec_resp.js']);
+  unset($javascript[drupal_get_path('theme', 'ec_resp') . '/bootstrap/js/bootstrap.min.js']);
+}
+
+/**
+ * Implements template_css_alter().
+ */
+function zeus_css_alter(&$css) {
 }
 
 /**
@@ -36,6 +43,18 @@ function zeus_theme_registry_alter(&$theme_registry) {
  * @todo include bootstrap in a nice way.
  */
 function zeus_preprocess_html(&$variables) {
+  global $user, $language;
+
+  // HTML Attributes
+  // Use a proper attributes array for the html attributes.
+  $variables['html_attributes'] = array();
+  $variables['html_attributes']['lang'][] = $language->language;
+  $variables['html_attributes']['dir'][] = $language->dir;
+
+  // Flatten the HTML attributes and RDF namespaces arrays.
+  $variables['html_attributes'] = drupal_attributes($variables['html_attributes']);
+
+  // Adds bootstrap.
   drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
 }
 
@@ -64,4 +83,13 @@ function zeus_preprocess_page(&$variables) {
       field_view_field('node', $node, 'field_shared_teaser', array('label' => 'hidden')) :
       NULL;
   }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function zeus_preprocess_node(&$variables) {
+
+  // Add $unpublished variable.
+  $variables['unpublished'] = (!$variables['status']) ? TRUE : FALSE;
 }
