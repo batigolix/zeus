@@ -1,6 +1,35 @@
 <?php
 
 /**
+ * Implements hook_preprocess_html().
+ */
+function zeus_preprocess_html(&$variables) {
+  global $user, $language;
+
+  // HTML Attributes
+  // Use a proper attributes array for the html attributes.
+  $variables['html_attributes'] = array();
+  $variables['html_attributes']['lang'][] = $language->language;
+  $variables['html_attributes']['dir'][] = $language->dir;
+
+  // Flatten the HTML attributes and RDF namespaces arrays.
+  $variables['html_attributes'] = drupal_attributes($variables['html_attributes']);
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * @todo include bootstrap in a nice way.
+ */
+function zeus_preprocess_page(&$variables) {
+
+  // Adds bootstrap.
+  drupal_add_css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
+  drupal_add_js('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 10));
+}
+
+
+/**
  * Implements template_js_alter().
  */
 function zeus_js_alter(&$javascript) {
@@ -39,26 +68,6 @@ function zeus_theme_registry_alter(&$theme_registry) {
 }
 
 /**
- * Implements hook_preprocess_html().
- * @todo include bootstrap in a nice way.
- */
-function zeus_preprocess_html(&$variables) {
-  global $user, $language;
-
-  // HTML Attributes
-  // Use a proper attributes array for the html attributes.
-  $variables['html_attributes'] = array();
-  $variables['html_attributes']['lang'][] = $language->language;
-  $variables['html_attributes']['dir'][] = $language->dir;
-
-  // Flatten the HTML attributes and RDF namespaces arrays.
-  $variables['html_attributes'] = drupal_attributes($variables['html_attributes']);
-
-  // Adds bootstrap.
-  drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
-}
-
-/**
  * Implements theme_breadcrumb().
  */
 function zeus_breadcrumb($variables) {
@@ -66,22 +75,6 @@ function zeus_breadcrumb($variables) {
   if (!empty($breadcrumb)) {
     $output = '<div class="one-crumb">' . implode(' > ', $breadcrumb) . '</div>';
     return $output;
-  }
-}
-
-/**
- * Implements hook_preprocess_page().
- *
- * @todo clean up.
- */
-function zeus_preprocess_page(&$variables) {
-  $node = &$variables['node'];
-  if($variables['node']){
-    $variables['date'] = format_date($variables['node']->created, 'short');
-    $variables['type'] = node_type_get_name($variables['node']);
-    $variables['intro'] = isset($node->field_shared_teaser) ?
-      field_view_field('node', $node, 'field_shared_teaser', array('label' => 'hidden')) :
-      NULL;
   }
 }
 
