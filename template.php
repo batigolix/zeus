@@ -56,6 +56,19 @@ function zeus_preprocess_html(&$variables) {
 
   // Adds bootstrap.
   drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array('type' => 'external'));
+
+  // Adds FontAwesome 4.7.0
+  drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array('type' => 'external'));
+
+  $head_elements = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'X-UA-Compatible',
+      'content' => 'IE=edge',
+    ),
+  );
+  drupal_add_html_head($head_elements, 'meta_http_equiv');
 }
 
 /**
