@@ -1,7 +1,8 @@
 @charset 'UTF-8';
 
-@import "variables";
-@import "components/teaser";
+@import "util/_variables";
+@import "util/_mixins";
+@import "components/_teaser";
 
 //@import 'bootstrap-sass/_bootstrap';
 
