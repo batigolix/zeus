@@ -1,22 +1,6 @@
 <?php
 
 /**
- * Implements hook_preprocess_html().
- */
-function zeus_preprocess_html(&$variables) {
-  global $user, $language;
-
-  // HTML Attributes
-  // Use a proper attributes array for the html attributes.
-  $variables['html_attributes'] = array();
-  $variables['html_attributes']['lang'][] = $language->language;
-  $variables['html_attributes']['dir'][] = $language->dir;
-
-  // Flatten the HTML attributes and RDF namespaces arrays.
-  $variables['html_attributes'] = drupal_attributes($variables['html_attributes']);
-}
-
-/**
  * Implements hook_preprocess_page().
  *
  * @todo include bootstrap in a nice way.
