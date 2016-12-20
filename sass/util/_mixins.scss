@@ -1,0 +1,80 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      @content;
+    }
+  }
+}
+
+
+/// Responsive breakpoints
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: 768px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "medium" {
+    @media (min-width: 768px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint == "large" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+@mixin icon($color, $textcolor, $icon, $fontsize) {
+  &:before {
+    content: $icon;
+    font-family: 'FontAwesome';
+    font-size: $fontsize;
+    color: $color;
+    font-weight: normal;
+  }
+}
+
+@mixin list($bordercolor) {
+  border-top: 1px solid $bordercolor;
+  padding: 2rem 0 2rem 0;
+}
+
+@mixin box($bordercolor, $shadowcolor, $backgroundcolor) {
+  border: 1px solid $bordercolor;
+  @include box-shadow($shadowcolor 1px 1px 3px);
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+@mixin author-picture {
+  border-radius: 25rem;
+  margin: 0 1.5rem 0 0;
+  float: left;
+  width: 5rem;
+  height: 5rem;
+}

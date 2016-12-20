@@ -1,19 +1,23 @@
 .teaser {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #e2e2e2;
   list-style: none;
   list-style-image: none;
   padding-top: 0;
   padding-bottom: 0;
-  overflow: hidden; }
-  .teaser:first-child {
-    border-top: 1px solid #CCC; }
-  .teaser:hover a .listing__title,
-  .teaser:hover a.listing__title, .teaser:active a .listing__title,
-  .teaser:active a.listing__title, .teaser:focus a .listing__title,
-  .teaser:focus a.listing__title {
-    text-decoration: underline;
-    color: #DDD; }
-  .teaser p {
-    margin-bottom: 0; }
+  overflow: hidden;
+}
+.teaser:first-child {
+  border-top: 1px solid #e2e2e2;
+}
+.teaser:hover a .listing__title,
+.teaser:hover a.listing__title, .teaser:active a .listing__title,
+.teaser:active a.listing__title, .teaser:focus a .listing__title,
+.teaser:focus a.listing__title {
+  text-decoration: underline;
+  color: #404040;
+}
+.teaser p {
+  margin-bottom: 0;
+}
 
 /*# sourceMappingURL=zeus.css.map */
